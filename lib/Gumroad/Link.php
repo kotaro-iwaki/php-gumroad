@@ -1,7 +1,5 @@
 <?php
 
-namespace Gumroad;
-
 /**
  * Gumroad Link
  *
@@ -9,7 +7,7 @@ namespace Gumroad;
  * @author  Kazunori Ninomiya <kazunori.ninomiya@gmail.com>
  * @license http://www.opensource.org/licenses/mit-license.php The MIT License
  */
-class Link
+class GumroadLink
 {
     public $id;
     public $name;

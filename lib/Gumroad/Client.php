@@ -1,7 +1,5 @@
 <?php
 
-namespace Gumroad;
-
 /**
  * Gumroad API Client
  *
@@ -9,7 +7,7 @@ namespace Gumroad;
  * @author  Kazunori Ninomiya <kazunori.ninomiya@gmail.com>
  * @license http://www.opensource.org/licenses/mit-license.php The MIT License
  */
-class Client
+class GumroadClient
 {
     const END_POINT = 'https://gumroad.com/api/v1';
 
@@ -145,7 +143,7 @@ class Client
 
         $links = array();
         foreach ($response->links as $link) {
-            $links[] = new Link(array(
+            $links[] = new GumroadLink(array(
                 'id'          => $link->id,
                 'name'        => $link->name,
                 'url'         => $link->url,
@@ -197,6 +195,7 @@ class Client
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_TIMEOUT_MS, $this->_timeout);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // igonre ssl cert.
         $response = curl_exec($ch);
 
         $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
